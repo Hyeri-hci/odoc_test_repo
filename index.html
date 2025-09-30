@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODCO Test - 혁신적인 개발 테스트 플랫폼</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1 class="logo">ODCO TEST</h1>
+            <p class="subtitle">혁신적인 오픈소스 개발 테스트 플랫폼</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3 class="feature-title">고성능 테스팅</h3>
+                    <p class="feature-description">
+                        최첨단 테스트 엔진으로 빠르고 정확한 코드 검증을 제공합니다. 
+                        실시간 피드백과 상세한 분석 리포트를 통해 개발 효율성을 극대화하세요.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🔧</span>
+                    <h3 class="feature-title">스마트 도구</h3>
+                    <p class="feature-description">
+                        AI 기반 코드 분석과 자동화된 테스트 생성으로 개발 시간을 단축합니다. 
+                        지능형 버그 탐지와 성능 최적화 제안을 받아보세요.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3 class="feature-title">실시간 분석</h3>
+                    <p class="feature-description">
+                        코드 품질 메트릭과 테스트 커버리지를 실시간으로 모니터링합니다. 
+                        시각적 대시보드로 프로젝트 상태를 한눈에 파악하세요.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🌐</span>
+                    <h3 class="feature-title">클라우드 통합</h3>
+                    <p class="feature-description">
+                        클라우드 네이티브 아키텍처로 어디서든 접근 가능합니다. 
+                        팀 협업 기능과 CI/CD 파이프라인 완벽 연동을 지원합니다.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <a href="#" class="cta-button" onclick="showDemo()">테스트 시작하기</a>
+            </div>
+            
+            <div class="footer">
+                <p class="footer-text">
+                    © 2025 ODCO Test Platform | 2025 OSS 개발자 대회 | 
+                    <span id="current-time"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 현재 시간 표시
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('current-time').textContent = timeString;
+        }
+
+        // 페이지 로드 시 시간 업데이트 시작
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // 데모 기능
+        function showDemo() {
+            const features = [
+                "🔄 코드 스캔 시작...",
+                "📝 테스트 케이스 생성 중...",
+                "⚡ 성능 분석 실행 중...",
+                "✅ 품질 검증 완료!",
+                "🎉 모든 테스트 통과!"
+            ];
+
+            let index = 0;
+            const originalText = document.querySelector('.cta-button').textContent;
+            
+            const interval = setInterval(() => {
+                if (index < features.length) {
+                    document.querySelector('.cta-button').textContent = features[index];
+                    index++;
+                } else {
+                    document.querySelector('.cta-button').textContent = originalText;
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+
+        // 스크롤 시 애니메이션 효과
+        function handleScroll() {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        // 키보드 단축키
+        document.addEventListener('keydown', function(e) {
+            if (e.key === ' ') {
+                e.preventDefault();
+                showDemo();
+            }
+        });
+
+        // 마우스 움직임에 따른 그라데이션 효과
+        document.addEventListener('mousemove', function(e) {
+            const hero = document.querySelector('.hero');
+            const rect = hero.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            hero.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%)`;
+        });
+
+        // 페이지 로드 애니메이션
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        console.log(`
+        🎉 ODCO Test Platform 로드 완료!
+        
+        💡 팁: 스페이스바를 눌러 데모를 실행해보세요!
+        🚀 마우스를 움직여서 인터랙티브 효과를 확인해보세요!
+        ⏰ 실시간 시계가 하단에 표시됩니다!
+        
+        개발자: GitHub Copilot
+        버전: 1.0.0
+        빌드: ${new Date().toISOString()}
+        `);
+    </script>
+</body>
+</html>
