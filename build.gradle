@@ -40,8 +40,5 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
     implementation "org.yaml:snakeyaml:2.2"
     implementation 'commons-collections:commons-collections:3.2.1'
-    //implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
-    //implementation "com.fasterxml.jackson.core:jackson-databind:2.17.1"
-    
   
 }
